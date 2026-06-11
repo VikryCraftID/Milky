@@ -12,13 +12,13 @@ const __filename = fileURLToPath(import.meta.url);
 
 //~~~~~~~~~~~~< GLOBAL SETTINGS >~~~~~~~~~~~~\\
 
-global.owner = ['6282113821188'] // ['628','628'] 2 owner atau lebih
-global.author = 'Nazedev'
-global.botname = 'Hitori Bot'
-global.packname = 'Bot WhatsApp'
+global.owner = ["6285651226154","6287740885303"] // ['628','628'] 2 owner atau lebih
+global.author = 'Iky'
+global.botname = 'Milky'
+global.packname = 'Milky Interactive'
 global.timezone = 'Asia/Jakarta' // Ganti pakai command .settimezone
 global.locale = 'en' // Ganti pakai command .setlocale
-global.listprefix = ['+','!','.']
+global.listprefix = ['.', '/']
 
 global.listv = ['•','●','■','✿','▲','➩','➢','➣','➤','✦','✧','△','❀','○','□','♤','♡','◇','♧','々','〆']
 global.tempatDB = 'database.json' // Taruh url mongodb di sini jika menggunakan mongodb. Format : 'mongodb+srv://...'
@@ -54,22 +54,22 @@ global.money = {
 }
 
 global.mess = {
-	key: "Apikey limit! Silahkan Upgrade: https://naze.biz.id",
-	owner: "Khusus Owner!",
-	admin: "Khusus Admin!",
-	botAdmin: "Bot harus Admin!",
-	onWa: "Nomor tersebut tidak terdaftar di WhatsApp!",
-	group: "Khusus Grup!",
-	private: "Khusus Private Chat!",
-	quoted: "Reply pesannya!",
-	limit: "Limit habis!",
-	prem: "Khusus Premium!",
-	text: "Masukkan teksnya!",
-	media: "Kirim medianya!",
-	wait: "Proses...",
-	fail: "Gagal!",
-	error: "Error!",
-	done: "Selesai!"
+	key: "Limit. Beritahu ini ke owner.",
+	owner: "Maaf, kamu tidak punya izin untuk menjalankan perintah ini.",
+	admin: "Maaf, perintah ini dikhususkan hanya untuk Admin grup.",
+	botAdmin: "Maaf, Milky perlu menjadi Admin untuk menjalankan perintah ini.",
+	onWa: "Nomor tersebut sepertinya tidak terdaftar di WhatsApp.",
+	group: "Maaf, perintah ini hanya bisa digunakan di grup.",
+	private: "Maaf, perintah ini hanya bisa digunakan di obrolan pribadi.",
+	quoted: "Reply pesan yang diinginkan.",
+	limit: "Limit. Beritahu ini ke owner.",
+	prem: "...",
+	text: "...",
+	media: "...",
+	wait: "...",
+	fail: "Kesalahan terjadi, proses gagal.",
+	error: "Kesalahan terjadi, harap beritahu ini ke owner.",
+	done: "Perintah dijalankan."
 }
 
 global.APIs = {
@@ -77,7 +77,7 @@ global.APIs = {
 	neosantara: 'https://api.neosantara.xyz/v1',
 }
 global.APIKeys = {
-	'https://api.naze.biz.id': 'YOUR_API_KEY',
+	'https://api.naze.biz.id': 'nz-6ff21f1469',
 	'https://api.neosantara.xyz/v1': 'API_KEY_NEOSANTARA_AI',
 }
 

@@ -1,0 +1,226 @@
+{
+  "roots": [
+    { "name": "Human", "tier": 1, "weight": 30 },
+    { "name": "Slime", "tier": 1, "weight": 30 },
+    { "name": "Elf", "tier": 1, "weight": 15 },
+    { "name": "Beastman", "tier": 1, "weight": 10 },
+    { "name": "Undead", "tier": 1, "weight": 5 },
+    { "name": "Dragonkin", "tier": 2, "weight": 4 },
+    { "name": "Golem", "tier": 2, "weight": 3 },
+    { "name": "Demon", "tier": 2, "weight": 1.5 },
+    { "name": "Fairy", "tier": 3, "weight": 1 },
+    { "name": "Mystic Dough", "tier": 3, "weight": 0.5 }
+  ],
+  "evos": {
+    "Human": [
+      { "to": "Skilled Human", "tier": 1, "prob": 75 },
+      { "to": "Corrupted Human", "tier": 2, "prob": 25 }
+    ],
+    "Skilled Human": [
+      { "to": "Elite Human", "tier": 2, "prob": 25 },
+      { "to": "Wizard / Witch", "tier": 2, "prob": 25 }
+    ],
+    "Elite Human": [
+      { "to": "Grandmaster Fighter", "tier": 3, "prob": 4.5 },
+      { "to": "Awakened Hero", "tier": 5, "prob": 0.5 }
+    ],
+    "Grandmaster Fighter": [
+      { "to": "Warlord", "tier": 4, "prob": 2 }
+    ],
+    "Wizard / Witch": [
+      { "to": "Archmage", "tier": 3, "prob": 5 },
+      { "to": "Sage", "tier": 4, "prob": 2 }
+    ],
+    "Corrupted Human": [
+      { "to": "Cultist Leader", "tier": 3, "prob": 15 }
+    ],
+    "Slime": [
+      { "to": "Elemental Slime", "tier": 2, "prob": 60 },
+      { "to": "Toxic Slime", "tier": 2, "prob": 40 }
+    ],
+    "Elemental Slime": [
+      { "to": "Inferno Slime", "tier": 3, "prob": 15 },
+      { "to": "Frost Slime", "tier": 3, "prob": 15 }
+    ],
+    "Inferno Slime": [
+      { "to": "Volcanic Core Slime", "tier": 4, "prob": 3 }
+    ],
+    "Frost Slime": [
+      { "to": "Absolute Zero Slime", "tier": 5, "prob": 0.5 }
+    ],
+    "Toxic Slime": [
+      { "to": "Venomous Slime", "tier": 3, "prob": 20 },
+      { "to": "King Slime", "tier": 4, "prob": 2 }
+    ],
+    "Elf": [
+      { "to": "Wood Elf", "tier": 1, "prob": 70 },
+      { "to": "Dark Elf", "tier": 2, "prob": 30 }
+    ],
+    "Wood Elf": [
+      { "to": "High Elf", "tier": 2, "prob": 30 },
+      { "to": "Ranger", "tier": 2, "prob": 20 }
+    ],
+    "High Elf": [
+      { "to": "Sun Elf", "tier": 3, "prob": 10 },
+      { "to": "Moon Elf", "tier": 3, "prob": 10 }
+    ],
+    "Sun Elf": [
+      { "to": "Solar Sovereign", "tier": 5, "prob": 0.5 }
+    ],
+    "Ranger": [
+      { "to": "Forest Guardian", "tier": 4, "prob": 4 }
+    ],
+    "Dark Elf": [
+      { "to": "Shadow Weaver", "tier": 4, "prob": 3 }
+    ],
+    "Beastman": [
+      { "to": "Feral Beast", "tier": 1, "prob": 80 },
+      { "to": "Avians", "tier": 2, "prob": 20 }
+    ],
+    "Feral Beast": [
+      { "to": "Wolfkin", "tier": 2, "prob": 30 },
+      { "to": "Tigerkin", "tier": 2, "prob": 20 }
+    ],
+    "Wolfkin": [
+      { "to": "Lycanthrope", "tier": 3, "prob": 10 },
+      { "to": "Alpha Predator", "tier": 4, "prob": 3 }
+    ],
+    "Lycanthrope": [
+      { "to": "Fenrir Descendant", "tier": 5, "prob": 0.5 }
+    ],
+    "Tigerkin": [
+      { "to": "Raging Berserker", "tier": 3, "prob": 8 }
+    ],
+    "Avians": [
+      { "to": "Sky Sovereign", "tier": 4, "prob": 2 }
+    ],
+    "Undead": [
+      { "to": "Skeleton", "tier": 1, "prob": 60 },
+      { "to": "Zombie", "tier": 1, "prob": 40 }
+    ],
+    "Skeleton": [
+      { "to": "Skeleton Warrior", "tier": 2, "prob": 25 },
+      { "to": "Lich Acolyte", "tier": 3, "prob": 10 }
+    ],
+    "Skeleton Warrior": [
+      { "to": "Death Knight", "tier": 4, "prob": 4 }
+    ],
+    "Death Knight": [
+      { "to": "Dullahan", "tier": 5, "prob": 0.5 }
+    ],
+    "Lich Acolyte": [
+      { "to": "Arch-Lich", "tier": 5, "prob": 0.2 }
+    ],
+    "Zombie": [
+      { "to": "Ghoul", "tier": 2, "prob": 20 }
+    ],
+    "Ghoul": [
+      { "to": "Vampire Noble", "tier": 4, "prob": 2 }
+    ],
+    "Dragonkin": [
+      { "to": "Wyrmling", "tier": 2, "prob": 80 },
+      { "to": "Basilisk", "tier": 2, "prob": 20 }
+    ],
+    "Wyrmling": [
+      { "to": "Dragonewt", "tier": 2, "prob": 40 },
+      { "to": "Half-Dragon", "tier": 3, "prob": 10 }
+    ],
+    "Dragonewt": [
+      { "to": "Drake", "tier": 3, "prob": 15 },
+      { "to": "Wyvern", "tier": 3, "prob": 15 }
+    ],
+    "Drake": [
+      { "to": "Ancient Drake", "tier": 4, "prob": 5 }
+    ],
+    "Wyvern": [
+      { "to": "Apex Wyvern", "tier": 4, "prob": 4 }
+    ],
+    "Half-Dragon": [
+      { "to": "True Dragon Aspect", "tier": 5, "prob": 0.5 }
+    ],
+    "Golem": [
+      { "to": "Clay Golem", "tier": 2, "prob": 75 }
+    ],
+    "Clay Golem": [
+      { "to": "Stone Golem", "tier": 2, "prob": 40 },
+      { "to": "Wood Automaton", "tier": 2, "prob": 20 }
+    ],
+    "Stone Golem": [
+      { "to": "Iron Golem", "tier": 3, "prob": 15 },
+      { "to": "Crystal Guardian", "tier": 3, "prob": 10 }
+    ],
+    "Iron Golem": [
+      { "to": "Obsidian Colossus", "tier": 4, "prob": 5 }
+    ],
+    "Crystal Guardian": [
+      { "to": "Radiant Construct", "tier": 5, "prob": 0.5 }
+    ],
+    "Wood Automaton": [
+      { "to": "Sentient Treant", "tier": 4, "prob": 3 }
+    ],
+    "Demon": [
+      { "to": "Imp", "tier": 2, "prob": 70 }
+    ],
+    "Imp": [
+      { "to": "Lesser Demon", "tier": 2, "prob": 40 },
+      { "to": "Hellhound", "tier": 3, "prob": 20 }
+    ],
+    "Lesser Demon": [
+      { "to": "Succubus / Incubus", "tier": 3, "prob": 15 },
+      { "to": "Demon Knight", "tier": 3, "prob": 10 }
+    ],
+    "Succubus / Incubus": [
+      { "to": "Archfiend", "tier": 4, "prob": 5 }
+    ],
+    "Demon Knight": [
+      { "to": "Abyssal Lord", "tier": 5, "prob": 0.5 }
+    ],
+    "Hellhound": [
+      { "to": "Cerberus", "tier": 4, "prob": 4 }
+    ],
+    "Fairy": [
+      { "to": "Pixie", "tier": 3, "prob": 60 }
+    ],
+    "Pixie": [
+      { "to": "Sprite", "tier": 3, "prob": 40 },
+      { "to": "Corrupted Pixie", "tier": 3, "prob": 20 }
+    ],
+    "Sprite": [
+      { "to": "Sylph", "tier": 3, "prob": 20 },
+      { "to": "Mystic Fairy", "tier": 3, "prob": 15 }
+    ],
+    "Sylph": [
+      { "to": "Tempest Spirit", "tier": 4, "prob": 8 }
+    ],
+    "Mystic Fairy": [
+      { "to": "Fairy Queen", "tier": 5, "prob": 1 }
+    ],
+    "Corrupted Pixie": [
+      { "to": "Banshee", "tier": 4, "prob": 5 }
+    ],
+    "Mystic Dough": [
+      { "to": "Sugar Biscuit", "tier": 3, "prob": 60 },
+      { "to": "Savory Cracker", "tier": 3, "prob": 40 }
+    ],
+    "Sugar Biscuit": [
+      { "to": "Frosted Runner", "tier": 3, "prob": 30 },
+      { "to": "Choco Knight", "tier": 3, "prob": 20 }
+    ],
+    "Frosted Runner": [
+      { "to": "Galactic Cookie", "tier": 5, "prob": 0.1 }
+    ],
+    "Choco Knight": [
+      { "to": "Dark Cacao Lord", "tier": 4, "prob": 2 }
+    ],
+    "Savory Cracker": [
+      { "to": "Guardian Hardtack", "tier": 3, "prob": 10 }
+    ]
+  },
+  "tiers": {
+    "1": { "color": "#808080" },
+    "2": { "color": "#3EAA3E" },
+    "3": { "color": "#36A3D5" },
+    "4": { "color": "#E5AD4D" },
+    "5": { "color": "#FF4444" }
+  }
+}

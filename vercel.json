@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "rewrites": [
+    { "source": "/wordle", "destination": "/wordle/index.html" },
+    { "source": "/api/(.*)", "destination": "/api/proxy.js" }
+  ],
+  "public": true
+}

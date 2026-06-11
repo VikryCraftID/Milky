@@ -1,0 +1,104 @@
+1. Human (Tier 1) -- Probability: 30%
+├── Skilled Human (Tier 1) -- Probability Human Evo Path: 75%
+│   ├── Elite Human (Tier 2) -- Probability Skilled Human Path: 25%
+│   │   ├── Grandmaster Fighter (Tier 3) -- Probability Elite Human Path: 4.5%
+│   │   │   └── Warlord (Tier 4) -- Probability Grandmaster Fighter Path: 2%
+│   │   └── Awakened Hero (Tier 5) -- Probability Elite Human Path: 0.5%
+│   └── Wizard / Witch (Tier 2) -- Probability Skilled Human Path: 25%
+│       ├── Archmage (Tier 3) -- Probability Wizard/Witch Path: 5%
+│       └── Sage (Tier 4) -- Probability Wizard/Witch Path: 2%
+├─── Corrupted Human (Tier 2) -- Probability Human Evo Path: 25%
+│    └── Cultist Leader (Tier 3) -- Probability Corrupted Human Path: 15%
+
+2. Slime (Tier 1) -- Probability: 30%
+├── Elemental Slime (Tier 2) -- Probability Slime Evo Path: 60%
+│   ├── Inferno Slime (Tier 3) -- Probability Elemental Slime Path: 15%
+│   │   └── Volcanic Core Slime (Tier 4) -- Probability Inferno Slime Path: 3%
+│   └── Frost Slime (Tier 3) -- Probability Elemental Slime Path: 15%
+│       └── Absolute Zero Slime (Tier 5) -- Probability Frost Slime Path: 0.5%
+├── Toxic Slime (Tier 2) -- Probability Slime Evo Path: 40%
+│    ├── Venomous Slime (Tier 3) -- Probability Toxic Slime Path: 20%
+│    └── King Slime (Tier 4) -- Probability Toxic Slime Path: 2%
+
+3. Elf (Tier 1) -- Probability: 15%
+├── Wood Elf (Tier 1) -- Probability Elf Evo Path: 70%
+│   ├── High Elf (Tier 2) -- Probability Wood Elf Path: 30%
+│   │   ├── Sun Elf (Tier 3) -- Probability High Elf Path: 10%
+│   │   │   └── Solar Sovereign (Tier 5) -- Probability Sun Elf Path: 0.5%
+│   │   └── Moon Elf (Tier 3) -- Probability High Elf Path: 10%
+│   └── Ranger (Tier 2) -- Probability Wood Elf Path: 20%
+│       └── Forest Guardian (Tier 4) -- Probability Ranger Path: 4%
+├── Dark Elf (Tier 2) -- Probability Elf Evo Path: 30%
+│    └── Shadow Weaver (Tier 4) -- Probability Dark Elf Path: 3%
+
+4. Beastman (Tier 1) -- Probability: 10%
+├── Feral Beast (Tier 1) -- Probability Beastman Evo Path: 80%
+│   ├── Wolfkin (Tier 2) -- Probability Feral Beast Path: 30%
+│   │   ├── Lycanthrope (Tier 3) -- Probability Wolfkin Path: 10%
+│   │   │   └── Fenrir Descendant (Tier 5) -- Probability Lycanthrope Path: 0.5%
+│   │   └── Alpha Predator (Tier 4) -- Probability Wolfkin Path: 3%
+│   └── Tigerkin (Tier 2) -- Probability Feral Beast Path: 20%
+│       └── Raging Berserker (Tier 3) -- Probability Tigerkin Path: 8%
+├── Avians (Tier 2) -- Probability Beastman Evo Path: 20%
+│    └── Sky Sovereign (Tier 4) -- Probability Avians Path: 2%
+
+5. Undead (Tier 1) -- Probability: 5%
+├── Skeleton (Tier 1) -- Probability Undead Evo Path: 60%
+│   ├── Skeleton Warrior (Tier 2) -- Probability Skeleton Path: 25%
+│   │   ├── Death Knight (Tier 4) -- Probability Skeleton Warrior Path: 4%
+│   │   │   └── Dullahan (Tier 5) -- Probability Death Knight Path: 0.5%
+│   └── Lich Acolyte (Tier 3) -- Probability Skeleton Path: 10%
+│       └── Arch-Lich (Tier 5) -- Probability Lich Acolyte Path: 0.2%
+├── Zombie (Tier 1) -- Probability Undead Evo Path: 40%
+│    └── Ghoul (Tier 2) -- Probability Zombie Path: 20%
+│        └── Vampire Noble (Tier 4) -- Probability Ghoul Path: 2%
+
+6. Dragonkin (Tier 2) -- Probability: 4%
+├── Wyrmling (Tier 2) -- Probability Dragonkin Evo Path: 80%
+│   ├── Dragonewt (Tier 2) -- Probability Wyrmling Path: 40%
+│   │   ├── Drake (Tier 3) -- Probability Dragonewt Path: 15%
+│   │   │   └── Ancient Drake (Tier 4) -- Probability Drake Path: 5%
+│   │   └── Wyvern (Tier 3) -- Probability Dragonewt Path: 15%
+│   │       └── Apex Wyvern (Tier 4) -- Probability Wyvern Path: 4%
+│   └── Half-Dragon (Tier 3) -- Probability Wyrmling Path: 10%
+│       └── True Dragon Aspect (Tier 5) -- Probability Half-Dragon Path: 0.5%
+├── Basilisk (Tier 2) -- Probability Dragonkin Evo Path: 20%
+
+7. Golem (Tier 2) -- Probability: 3%
+├── Clay Golem (Tier 2) -- Probability Golem Evo Path: 75%
+│   ├── Stone Golem (Tier 2) -- Probability Clay Golem Path: 40%
+│   │   ├── Iron Golem (Tier 3) -- Probability Stone Golem Path: 15%
+│   │   │   └── Obsidian Colossus (Tier 4) -- Probability Iron Golem Path: 5%
+│   │   └── Crystal Guardian (Tier 3) -- Probability Stone Golem Path: 10%
+│   │       └── Radiant Construct (Tier 5) -- Probability Crystal Guardian Path: 0.5%
+│   └── Wood Automaton (Tier 2) -- Probability Clay Golem Path: 20%
+│       └── Sentient Treant (Tier 4) -- Probability Wood Automaton Path: 3%
+
+8. Demon (Tier 2) -- Probability: 1.5%
+├── Imp (Tier 2) -- Probability Demon Evo Path: 70%
+│   ├── Lesser Demon (Tier 2) -- Probability Imp Path: 40%
+│   │   ├── Succubus / Incubus (Tier 3) -- Probability Lesser Demon Path: 15%
+│   │   │   └── Archfiend (Tier 4) -- Probability Succubus/Incubus Path: 5%
+│   │   └── Demon Knight (Tier 3) -- Probability Lesser Demon Path: 10%
+│   │       └── Abyssal Lord (Tier 5) -- Probability Demon Knight Path: 0.5%
+│   └── Hellhound (Tier 3) -- Probability Imp Path: 20%
+│       └── Cerberus (Tier 4) -- Probability Hellhound Path: 4%
+
+9. Fairy (Tier 3) -- Probability: 1%
+├── Pixie (Tier 3) -- Probability Fairy Evo Path: 60%
+│   ├── Sprite (Tier 3) -- Probability Pixie Path: 40%
+│   │   ├── Sylph (Tier 3) -- Probability Sprite Path: 20%
+│   │   │   └── Tempest Spirit (Tier 4) -- Probability Sylph Path: 8%
+│   │   └── Mystic Fairy (Tier 3) -- Probability Sprite Path: 15%
+│   │       └── Fairy Queen (Tier 5) -- Probability Mystic Fairy Path: 1%
+│   └── Corrupted Pixie (Tier 3) -- Probability Pixie Path: 20%
+│       └── Banshee (Tier 4) -- Probability Corrupted Pixie Path: 5%
+
+10. Mystic Dough (Tier 3) -- Probability: 0.5%
+├── Sugar Biscuit (Tier 3) -- Probability Mystic Dough Evo Path: 60%
+│   ├── Frosted Runner (Tier 3) -- Probability Sugar Biscuit Path: 30%
+│   │   └── Galactic Cookie (Tier 5) -- Probability Frosted Runner Path: 0.1%
+│   └── Choco Knight (Tier 3) -- Probability Sugar Biscuit Path: 20%
+│       └── Dark Cacao Lord (Tier 4) -- Probability Choco Knight Path: 2%
+└── Savory Cracker (Tier 3) -- Probability Mystic Dough Evo Path: 40%
+    └── Guardian Hardtack (Tier 3) -- Probability Savory Cracker Path: 10%

@@ -13,6 +13,7 @@ import PhoneNumber from 'awesome-phonenumber';
 import { checkStatus } from './database.js';
 import { imageToWebp, videoToWebp, writeExif, gifToWebp } from '../lib/exif.js';
 import { getBuffer, getSizeMedia, fetchJson, sleep, axiosss, fixBytes } from '../lib/function.js';
+import { handleParticipantSecurity, syncGroupAdmins } from '../lib/security.js';
 import { jidNormalizedUser, proto, getBinaryNodeChildren, getBinaryNodeChildString, getBinaryNodeChild, generateMessageIDV2, jidEncode, encodeSignedDeviceIdentity, generateWAMessageContent, generateForwardMessageContent, prepareWAMessageMedia, delay, areJidsSameUser, extractMessageContent, generateMessageID, downloadContentFromMessage, generateWAMessageFromContent, jidDecode, generateWAMessage, toBuffer, getContentType, getDevice } from 'baileys';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -54,19 +55,19 @@ async function GroupUpdate(naze, m, store) {
 		const normalizedTarget = clearParse(m.messageStubParameters[0]);
 		const type = m.messageStubType;
 		const messages = {
-			1: 'mereset link grup!',
-			21: `mengubah Subject Grup menjadi :\n*${normalizedTarget}*`,
-			22: 'telah mengubah icon grup.',
-			23: 'mereset link grup!',
-			24: `mengubah deskripsi grup.\n\n${normalizedTarget}`,
-			25: `telah mengatur agar *${normalizedTarget == 'on' ? 'hanya admin' : 'semua peserta'}* yang dapat mengedit info grup.`,
-			26: `telah *${normalizedTarget == 'on' ? 'menutup' : 'membuka'}* grup!\nSekarang ${normalizedTarget == 'on' ? 'hanya admin yang' : 'semua peserta'} dapat mengirim pesan.`,
-			29: `telah menjadikan @${normalizedTarget?.id?.split('@')?.[0]} sebagai admin.`,
-			30: `telah memberhentikan @${normalizedTarget?.id?.split('@')?.[0]} dari admin.`,
-			72: `mengubah durasi pesan sementara menjadi *@${normalizedTarget}*`,
-			123: 'menonaktifkan pesan sementara.',
-			132: 'mereset link grup!',
-			172: `@${normalizedTarget?.pn?.split('@')?.[0]} meminta bergabung`,
+			1: L('groupActions.revoke'),
+			21: L('groupActions.subject', normalizedTarget),
+			22: L('groupActions.icon'),
+			23: L('groupActions.revoke'),
+			24: L('groupActions.description', normalizedTarget),
+			25: L('groupActions.editInfo', normalizedTarget),
+			26: L('groupActions.closeGroup', normalizedTarget),
+			29: L('groupActions.promote', normalizedTarget?.id?.split('@')?.[0]),
+			30: L('groupActions.demote', normalizedTarget?.id?.split('@')?.[0]),
+			72: L('groupActions.ephemeral', normalizedTarget),
+			123: L('groupActions.ephemeralOff'),
+			132: L('groupActions.revoke'),
+			172: L('groupActions.joinRequest', normalizedTarget?.pn?.split('@')?.[0]),
 		}
 		if (naze.public && global.db?.groups?.[m.chat]?.setinfo && messages[type]) {
 			await naze.sendMessage(m.chat, { text: `${admin} ${messages[type]}`, mentions: [m.sender, ...((normalizedTarget?.id || normalizedTarget)?.includes('@') ? [`${normalizedTarget.id || normalizedTarget}`] : [])].filter(Boolean)}, { ephemeralExpiration: m.expiration || m?.metadata?.ephemeralDuration || store?.messages[m.chat]?.array?.slice(-1)[0]?.metadata?.ephemeralDuration || 0 })
@@ -124,6 +125,12 @@ async function GroupParticipantsUpdate(naze, update, store) {
 				}
 			}
 		}
+
+        // Ensure metadata exists
+        if (!store.groupMetadata[id]) {
+            store.groupMetadata[id] = await naze.groupMetadata(id).catch(() => null);
+        }
+
 		if (global.db?.groups?.[id] && store?.groupMetadata?.[id]) {
 			const metadata = store.groupMetadata[id];
 			for (let n of participants) {
@@ -144,6 +151,15 @@ async function GroupParticipantsUpdate(naze, update, store) {
 							store.groupMetadata[id] = await naze.groupMetadata(id).catch(e => ({ ...store.groupMetadata[id] }));
 						}, 5000);
 					}
+                    // --- WHIETLIST NOTIFICATION ON JOIN ---
+                    if (jidNormalizedUser(jid) === jidNormalizedUser(naze.user.id)) {
+                        if (!global.db.whitelist.includes(id)) {
+                            await naze.sendMessage(id, { text: L('groupActions.whitelistJoin') }).catch(() => {});
+                        }
+                        // Inisialisasi admin awal untuk antikudeta
+                        if (!global.db.groups[id]) global.db.groups[id] = {};
+                        await syncGroupAdmins(naze, id, global.db.groups[id], store);
+                    }
 				} else if (action === 'remove') {
 					if (global.db.groups[id]?.leave) messageText = global.db.groups[id]?.text?.setleave || `@\nLeaving From ${metadata.subject}`;
 					if ((jidNormalizedUser(naze.user.lid) == jidNormalizedUser(jid)) || (jidNormalizedUser(naze.user.id) == jidNormalizedUser(jid))) {
@@ -155,9 +171,15 @@ async function GroupParticipantsUpdate(naze, update, store) {
 				} else if (action === 'promote') {
 					if (global.db.groups[id]?.promote) messageText = global.db.groups[id]?.text?.setpromote || `@\nPromote From ${metadata.subject}\nBy @admin`;
 					updateAdminStatus(participants, metadata.participants, 'admin');
+                    await handleParticipantSecurity(naze, update);
 				} else if (action === 'demote') {
-					if (global.db.groups[id]?.demote) messageText = global.db.groups[id]?.text?.setdemote || `@\nDemote From ${metadata.subject}\nBy @admin`;
-					updateAdminStatus(participants, metadata.participants, null);
+                    const isKudeta = await handleParticipantSecurity(naze, update);
+                    if (!isKudeta) {
+					    if (global.db.groups[id]?.demote) messageText = global.db.groups[id]?.text?.setdemote || `@\nDemote From ${metadata.subject}\nBy @admin`;
+					    updateAdminStatus(participants, metadata.participants, null);
+                    } else {
+                        messageText = null;
+                    }
 				}
 				if (messageText && naze.public) {
 					await naze.sendMessage(id, {
@@ -184,15 +206,23 @@ async function GroupParticipantsUpdate(naze, update, store) {
 
 async function LoadDataBase(naze, m) {
 	try {
+        // HANYA proses JID standard
+        if (!m.sender.endsWith('@s.whatsapp.net')) return;
+
 		const botNumber = await naze.decodeJid(naze.user.id);
-		let game = global.db.game || {};
-		let premium = global.db.premium || [];
-		let user = global.db.users[m.sender] || {};
-		let setBot = global.db.set[botNumber] || {};
+		let game = (global.db && global.db.game) || {};
+		let premium = (global.db && global.db.premium) || [];
+		let user = (global.db && global.db.users && global.db.users[m.sender]) || {};
+		let setBot = (global.db && global.db.set && global.db.set[botNumber]) || {};
 		
-		global.db.game = game;
-		global.db.users[m.sender] = user;
-		global.db.set[botNumber] = setBot;
+        if (global.db) {
+            if (!global.db.game) global.db.game = {};
+		    global.db.game = game;
+            if (!global.db.users) global.db.users = {};
+		    global.db.users[m.sender] = user;
+            if (!global.db.set) global.db.set = {};
+		    global.db.set[botNumber] = setBot;
+        }
 		
 		const defaultSetBot = {
 			lang: 'id',
@@ -229,6 +259,7 @@ async function LoadDataBase(naze, m) {
 		const moneyUser = user.vip ? global.money.vip : checkStatus(m.sender, premium) ? global.money.premium : global.money.free;
 		
 		const defaultUser = {
+			lang: 'en',
 			vip: false,
 			ban: false,
 			afkTime: -1,
@@ -326,7 +357,7 @@ async function MessagesUpsert(naze, message, store) {
 		if (nazeHandler) {
 			nazeHandler(naze, m, msg, store);
 		} else {
-			await reloadNaze();
+			await reloadHandler();
 			if (nazeHandler) nazeHandler(naze, m, msg, store);
 		}
 		if (global.db?.set?.[botNumber]?.readsw && msg.key.remoteJid === 'status@broadcast') {
@@ -338,6 +369,11 @@ async function MessagesUpsert(naze, message, store) {
 			}
 		}
 	} catch (e) {
+		const msg = message.messages[0];
+		if (msg?.messageStubType === 2 || msg?.messageStubParameters?.includes('No session found to decrypt message')) {
+			logger.warn('DECRYPT', `Received undecryptable message from ${msg.key.remoteJid} (Syncing/New Session)`);
+			return;
+		}
 		console.log(message);
 		throw e;
 	}
@@ -452,6 +488,32 @@ async function Solving(naze, store) {
 		});
 		return hasil;
 	}
+
+    // --- AUTO THUMBNAIL HOOK ---
+    const originalSendMessage = naze.sendMessage.bind(naze);
+    naze.sendMessage = async (jid, content, options = {}) => {
+        if (content && content.image && !content.jpegThumbnail) {
+            try {
+                const { generateThumbnail } = await import('../lib/design.js');
+                let buffer;
+                if (Buffer.isBuffer(content.image)) {
+                    buffer = content.image;
+                } else if (content.image.url) {
+                    const { getBuffer } = await import('../lib/function.js');
+                    buffer = await getBuffer(content.image.url);
+                }
+                
+                if (buffer) {
+                    const thumb = await generateThumbnail(buffer);
+                    if (thumb) content.jpegThumbnail = thumb;
+                }
+            } catch (e) {
+                console.error('Auto-thumbnail hook error:', e);
+            }
+        }
+        return originalSendMessage(jid, content, options);
+    };
+    // ---------------------------
 
 	naze.sendPoll = (jid, name = '', values = [], quoted, selectableCount = 1) => {
 		return naze.sendMessage(jid, { poll: { name, values, selectableCount }}, { quoted, ephemeralExpiration: quoted?.expiration || quoted?.metadata?.ephemeralDuration || store?.messages[jid]?.array?.slice(-1)[0]?.metadata?.ephemeralDuration || 0 })
@@ -937,8 +999,9 @@ async function Serialize(naze, msg, store) {
 		m.fromMe = m.key.fromMe
 		m.isBot = ['HSK', 'BAE', 'B1E', '3EB0', 'B24E', 'WA'].some(a => m.id.startsWith(a) && [12, 16, 20, 22, 40].includes(m.id.length)) || /(.)\1{5,}|[^a-zA-Z0-9]|[^0-9A-F]/.test(m.id) || false
 		m.isGroup = m.chat.endsWith('@g.us')
-		if (!m.isGroup && m.chat.endsWith('@lid')) m.chat = naze.findJidByLid(m.chat, store) || m.chat;
+		if (!m.isGroup && m.chat.endsWith('@lid')) m.chat = naze.findJidByLid(m.chat, store, true) || m.chat;
 		m.sender = naze.decodeJid(m.fromMe && naze.user.id || m.key.participantAlt || m.key.participant || m.chat || '')
+		if (m.sender.endsWith('@lid')) m.sender = naze.findJidByLid(m.sender, store, true) || m.sender;
 		if (m.isGroup) {
 			if (!store.groupMetadata) store.groupMetadata = await naze.groupFetchAllParticipating().catch(e => ({}));
 			let metadata = store.groupMetadata[m.chat] ? store.groupMetadata[m.chat] : (store.groupMetadata[m.chat] = await naze.groupMetadata(m.chat).catch(e => ({ ...store.groupMetadata[m.chat] })));
@@ -1102,7 +1165,8 @@ export {
 };
 
 // Reload Handler
-const watcher = chokidar.watch(nazePath, {
+const libPath = path.resolve(__dirname, '../lib');
+const watcher = chokidar.watch([nazePath, libPath], {
 	ignored: /^\./,
 	persistent: true,
 	awaitWriteFinish: {
@@ -1113,5 +1177,9 @@ const watcher = chokidar.watch(nazePath, {
 
 watcher.on('change', async (filePath) => {
 	console.log(chalk.yellowBright(`[UPDATE] ${filePath}`));
-	await reloadHandler();
+	if (filePath.toLowerCase().includes('lib')) {
+		process.exit(2);
+	} else {
+		await reloadHandler();
+	}
 });

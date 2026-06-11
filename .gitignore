@@ -1,0 +1,28 @@
+# Dependencies
+/node_modules
+
+# Environment Variables & Sensitive Data
+.env
+/nazedev/
+*.json.bak
+database.json
+creds.json
+
+# Database files with user data
+database/baileys_store.json
+database/rpg.json
+database/groups.json
+database/wordle_stats.json
+database/ach.json
+database/temp/
+
+# Log files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+.agents/
