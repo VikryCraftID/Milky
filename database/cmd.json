@@ -1,0 +1,97 @@
+{
+  "whois": {
+    "disabled": false,
+    "cooldown": 90,
+    "costYen": 2,
+    "minTrust": 60
+  },
+  "daily": {
+    "cooldown": 0,
+    "costYen": 0,
+    "minTrust": 0
+  },
+  "pay": {
+    "cooldown": 30,
+    "costYen": 0,
+    "minTrust": 0,
+    "disabled": false
+  },
+  "setavatar": {
+    "cooldown": 15,
+    "costYen": 2,
+    "minTrust": 60
+  },
+  "setbackground": {
+    "cooldown": 15,
+    "costYen": 2,
+    "minTrust": 60
+  },
+  "setflag": {
+    "cooldown": 15,
+    "costYen": 0.5,
+    "minTrust": 60
+  },
+  "status": {
+    "cooldown": 120,
+    "costYen": 0,
+    "minTrust": 60,
+    "banned": {},
+    "disabled": false
+  },
+  "setvanity": {
+    "cooldown": 15,
+    "costYen": 10,
+    "minTrust": 60
+  },
+  "setbio": {
+    "cooldown": 15,
+    "costYen": 0.5,
+    "minTrust": 60
+  },
+  "setname": {
+    "cooldown": 15,
+    "costYen": 1,
+    "minTrust": 60
+  },
+  "help": {
+    "cooldown": 5,
+    "costYen": 0,
+    "minTrust": 0
+  },
+  "group": {
+    "maintenance": true,
+    "maintenanceReason": "Sedang dalam perawatan"
+  },
+  "pin": {
+    "maintenance": true,
+    "maintenanceReason": "Sedang dalam perawatan",
+    "disabled": true,
+    "disabledReason": "Tidak ada alasan"
+  },
+  "unpin": {
+    "maintenance": true,
+    "maintenanceReason": "Sedang dalam perawatan",
+    "disabled": true,
+    "disabledReason": "Tidak ada alasan"
+  },
+  "bypass": {
+    "disabled": false
+  },
+  "wordle": {
+    "maintenance": false
+  },
+  "register": {
+    "cooldown": 0,
+    "costYen": 0,
+    "minTrust": 0
+  },
+  "rein": {
+    "cooldown": 0,
+    "costYen": 2.5,
+    "minTrust": 0
+  },
+  "leaderboard": {
+    "disabled": true,
+    "disabledReason": "Tidak ada alasan"
+  }
+}

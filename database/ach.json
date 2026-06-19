@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Space Beginner",
+    "tier": 1,
+    "stars": 1,
+    "color": "#808080"
+  },
+  {
+    "id": 2,
+    "name": "Trusted Astronout",
+    "tier": 3,
+    "stars": 3,
+    "color": "#36A3D5"
+  },
+  {
+    "id": 3,
+    "name": "High Dedication",
+    "tier": 2,
+    "stars": 2,
+    "color": "#3EAA3E"
+  }
+]
