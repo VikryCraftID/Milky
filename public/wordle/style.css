@@ -772,6 +772,8 @@ body {
 
 #modal-start-btn:active { transform: scale(0.96); }
 
+#modal-start-btn.hidden { display: none; }
+
 #modal-close {
     background: rgba(42, 31, 82, 0.9);
     border: 1px solid var(--border);
