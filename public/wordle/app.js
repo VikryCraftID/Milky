@@ -229,7 +229,8 @@ async function loadSession() {
             return;
         }
 
-        currentLang = data.lang || params.lang;
+        // Bahasa website mengikuti segmen URL (bahasa interaksi user), bukan bahasa kamus game
+        currentLang = params.lang || data.lang || 'id';
         langSelect.value = currentLang;
         applyTranslations(currentLang);
 
