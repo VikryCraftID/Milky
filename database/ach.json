@@ -19,5 +19,298 @@
     "tier": 2,
     "stars": 2,
     "color": "#3EAA3E"
+  },
+  {
+    "id": 4,
+    "name": "Second Life",
+    "tier": 1,
+    "stars": 1,
+    "color": "#808080"
+  },
+  {
+    "id": 5,
+    "name": "Soul Evolution",
+    "tier": 2,
+    "stars": 2,
+    "color": "#3EAA3E"
+  },
+  {
+    "id": 6,
+    "name": "Transcendent Being",
+    "tier": 5,
+    "stars": 5,
+    "color": "#FF4444"
+  },
+  {
+    "id": 7,
+    "name": "Blessed Rebirth",
+    "tier": 4,
+    "stars": 4,
+    "color": "#E5AD4D"
+  },
+  {
+    "id": 8,
+    "name": "Against All Odds",
+    "tier": 5,
+    "stars": 5,
+    "color": "#FF4444"
+  },
+  {
+    "id": 9,
+    "name": "Cycle Breaker",
+    "tier": 4,
+    "stars": 4,
+    "color": "#E5AD4D"
+  },
+  {
+    "id": 10,
+    "name": "Endless Samsara",
+    "tier": 5,
+    "stars": 5,
+    "color": "#FF4444"
+  },
+  {
+    "id": 11,
+    "name": "First Pull",
+    "tier": 1,
+    "stars": 1,
+    "color": "#808080"
+  },
+  {
+    "id": 12,
+    "name": "Beginner's Luck",
+    "tier": 2,
+    "stars": 2,
+    "color": "#3EAA3E"
+  },
+  {
+    "id": 13,
+    "name": "Golden Shine",
+    "tier": 3,
+    "stars": 3,
+    "color": "#36A3D5"
+  },
+  {
+    "id": 14,
+    "name": "Double Fortune",
+    "tier": 4,
+    "stars": 4,
+    "color": "#E5AD4D"
+  },
+  {
+    "id": 15,
+    "name": "Cosmic Jackpot",
+    "tier": 5,
+    "stars": 5,
+    "color": "#FF4444"
+  },
+  {
+    "id": 16,
+    "name": "Collector's Instinct",
+    "tier": 3,
+    "stars": 3,
+    "color": "#36A3D5"
+  },
+  {
+    "id": 17,
+    "name": "Master Archivist",
+    "tier": 5,
+    "stars": 5,
+    "color": "#FF4444"
+  },
+  {
+    "id": 18,
+    "name": "Duplicate Nightmare",
+    "tier": 2,
+    "stars": 2,
+    "color": "#3EAA3E"
+  },
+  {
+    "id": 19,
+    "name": "Unlucky Astronaut",
+    "tier": 2,
+    "stars": 2,
+    "color": "#3EAA3E",
+    "hidden": true
+  },
+  {
+    "id": 20,
+    "name": "Starlight Awakened",
+    "tier": 1,
+    "stars": 1,
+    "color": "#808080"
+  },
+  {
+    "id": 21,
+    "name": "Rapid Growth",
+    "tier": 2,
+    "stars": 2,
+    "color": "#3EAA3E"
+  },
+  {
+    "id": 22,
+    "name": "Sky Breaker",
+    "tier": 4,
+    "stars": 4,
+    "color": "#E5AD4D"
+  },
+  {
+    "id": 23,
+    "name": "Beyond The Cosmos",
+    "tier": 5,
+    "stars": 5,
+    "color": "#FF4444"
+  },
+  {
+    "id": 24,
+    "name": "Pocket Money",
+    "tier": 1,
+    "stars": 1,
+    "color": "#808080"
+  },
+  {
+    "id": 25,
+    "name": "Big Spender",
+    "tier": 2,
+    "stars": 2,
+    "color": "#3EAA3E"
+  },
+  {
+    "id": 26,
+    "name": "Financial Crisis",
+    "tier": 2,
+    "stars": 2,
+    "color": "#3EAA3E",
+    "hidden": true
+  },
+  {
+    "id": 27,
+    "name": "Rich Astronaut",
+    "tier": 5,
+    "stars": 5,
+    "color": "#FF4444"
+  },
+  {
+    "id": 28,
+    "name": "Yen Overflow",
+    "tier": 5,
+    "stars": 5,
+    "color": "#FF4444",
+    "hidden": true
+  },
+  {
+    "id": 29,
+    "name": "Redemption Arc",
+    "tier": 3,
+    "stars": 3,
+    "color": "#36A3D5"
+  },
+  {
+    "id": 30,
+    "name": "Am I That Rude?",
+    "tier": 3,
+    "stars": 3,
+    "color": "#36A3D5",
+    "hidden": true
+  },
+  {
+    "id": 31,
+    "name": "Consistency Is Key",
+    "tier": 2,
+    "stars": 2,
+    "color": "#3EAA3E"
+  },
+  {
+    "id": 32,
+    "name": "Give Me One Month",
+    "tier": 3,
+    "stars": 3,
+    "color": "#36A3D5"
+  },
+  {
+    "id": 33,
+    "name": "Never Miss A Day",
+    "tier": 4,
+    "stars": 4,
+    "color": "#E5AD4D"
+  },
+  {
+    "id": 34,
+    "name": "Perfect Orbit",
+    "tier": 5,
+    "stars": 5,
+    "color": "#FF4444"
+  },
+  {
+    "id": 35,
+    "name": "Broken Orbit",
+    "tier": 2,
+    "stars": 2,
+    "color": "#3EAA3E",
+    "hidden": true
+  },
+  {
+    "id": 36,
+    "name": "Night Owl",
+    "tier": 2,
+    "stars": 2,
+    "color": "#3EAA3E"
+  },
+  {
+    "id": 37,
+    "name": "Early Fire",
+    "tier": 2,
+    "stars": 2,
+    "color": "#3EAA3E"
+  },
+  {
+    "id": 38,
+    "name": "Talkative Explorer",
+    "tier": 2,
+    "stars": 2,
+    "color": "#3EAA3E"
+  },
+  {
+    "id": 39,
+    "name": "Touch Grass",
+    "tier": 1,
+    "stars": 1,
+    "color": "#808080"
+  },
+  {
+    "id": 40,
+    "name": "Trophy Collector",
+    "tier": 3,
+    "stars": 3,
+    "color": "#36A3D5"
+  },
+  {
+    "id": 41,
+    "name": "Destiny's Favorite",
+    "tier": 5,
+    "stars": 5,
+    "color": "#FF4444"
+  },
+  {
+    "id": 42,
+    "name": "Ancient One",
+    "tier": 5,
+    "stars": 5,
+    "color": "#FF4444"
+  },
+  {
+    "id": 43,
+    "name": "Milky's Chosen",
+    "tier": 5,
+    "stars": 5,
+    "color": "#FF4444"
+  },
+  {
+    "id": 44,
+    "name": "Finally, I'm Here",
+    "tier": 5,
+    "stars": 5,
+    "color": "#FF4444",
+    "hidden": true
   }
 ]
