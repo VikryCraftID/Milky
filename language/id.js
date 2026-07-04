@@ -74,6 +74,15 @@ export default {
 
     // Plugins Messages
     plugins: {
+        redeem: {
+            desc: "Klaim hadiah dari code redeem (hanya di dalam grup).",
+            usage: "Syntax: *${args[0]}${args[1]} <code>*",
+            invalid: "Code redeem tidak ditemukan atau salah.",
+            expired: "Yah, code ini sudah kedaluwarsa!",
+            wrongGroup: "Maaf, code ini tidak dapat digunakan di grup ini.",
+            alreadyClaimed: "Kamu sudah pernah mengklaim code ini sebelumnya.",
+            success: "🎉 Berhasil klaim code *${args[0]}*!\n\nKamu mendapatkan:\n${args[1]}"
+        },
         whitelist: {
             desc: "Mengaktifkan bot dalam grup tertentu.",
             success: "Grup berhasil diregistrasi.\n\n- *ID:* ${args[0]}\n- *Owner:* @${args[1]}",
@@ -312,8 +321,10 @@ export default {
         },
         editaudio: {
             desc: "Edit audio dengan berbagai efek (bisa dikombinasi).",
-            usage: "Pilih efek. Contoh: *${args[0]}${args[1]} slow,reverb*\n\nEfek: earrape, chipmunk, monster, muffled, reverb, fast, slow",
-            invalidEffect: "Efek tidak dikenal: *${args[0]}*\nEfek: earrape, chipmunk, monster, muffled, reverb, fast, slow",
+            usage: "Pilih efek. Contoh: *${args[0]}${args[1]} slow,reverb*\n\nEfek: earrape, chipmunk, monster, muffled, reverb, fast, slow, reverse, drunk\n\nAtur sendiri: *${args[0]}${args[1]} custom pitch:1.2,speed:1.2,reverb:5*",
+            invalidEffect: "Efek tidak dikenal: *${args[0]}*\nEfek: earrape, chipmunk, monster, muffled, reverb, fast, slow, reverse, drunk",
+            customUsage: "*# Edit Audio · Custom*\n\nContoh: *${args[0]}${args[1]} custom pitch:1.2,speed:1.2,volume:2,reverb:5*\n\n- pitch: 0.1 – 4\n- speed: 0.5 – 4\n- volume: 1 – 10\n- reverb: 0 – 10 (volume reverb; sisanya audio asli)",
+            customInvalid: "*# Edit Audio · Custom*\n\nArgumen tidak valid. Periksa batasannya:\n- pitch: 0.1 – 4\n- speed: 0.5 – 4\n- volume: 1 – 10\n- reverb: 0 – 10\n\nContoh: *${args[0]}${args[1]} custom pitch:1.2,reverb:5*",
             noAudio: "Kirim atau reply audio/voice note dengan caption perintah ini.",
             failed: "*# Edit Audio*\n\nGagal memproses audio. Coba lagi nanti."
         },
@@ -468,6 +479,19 @@ export default {
             desc: "Memberikan achievement ke pengguna (khusus owner).",
             notFound: "Achievement dengan id ${args[0]} tidak ditemukan.",
             already: "Pengguna sudah memiliki achievement tersebut."
+        },
+        code: {
+            desc: "Mengelola code redeem (khusus owner).",
+            usage: "Syntax:\n*${args[0]}${args[1]} add <st/nst> <code> <reward> <time> <link/*> [true/false]*\n*${args[0]}${args[1]} del <code>*",
+            addUsage: "Syntax: *${args[0]}${args[1]} add <st/nst> <code> <reward> <time> <link/*> [true/false]*\n\nContoh: *${args[0]}${args[1]} add nst NARUTO yen:100,xp:5000,tf:10 3d * true*\n\n- *st* = set nilai, *nst* = tambah nilai\n- *reward*: yen/xp/tf (pisah koma, tanpa spasi)\n- *time*: 30m / 24h / 3d / 2w\n- *link*: * (semua grup) atau link undangan grup\n- *[true/false]*: klaim 1x per user (default true)",
+            delUsage: "Syntax: *${args[0]}${args[1]} del <code>*",
+            invalidReward: "Format reward tidak valid. Gunakan yen/xp/tf, contoh: *yen:100,xp:5000,tf:10* (tanpa spasi).",
+            invalidTime: "Format waktu tidak valid. Contoh: *30m*, *24h*, *3d*, *2w*.",
+            invalidLink: "Link grup tidak valid. Isi dengan *\\** (semua grup) atau link undangan grup yang benar.",
+            notFound: "Code *${args[0]}* tidak ditemukan.",
+            deleted: "Code *${args[0]}* berhasil dihapus.",
+            scopeAll: "Semua grup",
+            added: "✅ Code redeem tersimpan!\n\n*Code:* ${args[0]}\n*Mode:* ${args[1]}\n*Reward:* ${args[2]}\n*Expired:* ${args[3]}\n*Cakupan:* ${args[4]}\n*Sekali per user:* ${args[5]}"
         },
         addplugin: {
             desc: "Menambahkan plugin dari pesan yang direply.",

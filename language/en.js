@@ -74,6 +74,15 @@ export default {
 
     // Plugins Messages
     plugins: {
+        redeem: {
+            desc: "Claim a reward from a redeem code (groups only).",
+            usage: "Syntax: *${args[0]}${args[1]} <code>*",
+            invalid: "Redeem code not found or incorrect.",
+            expired: "Aw, this code has already expired!",
+            wrongGroup: "Sorry, this code cannot be used in this group.",
+            alreadyClaimed: "You have already claimed this code before.",
+            success: "🎉 Successfully claimed code *${args[0]}*!\n\nYou received:\n${args[1]}"
+        },
         whitelist: {
             desc: "Activate the bot in a specific group.",
             success: "Group successfully registered.\n\n- *ID:* ${args[0]}\n- *Owner:* @${args[1]}",
@@ -319,8 +328,10 @@ export default {
         },
         editaudio: {
             desc: "Edit audio with various effects (combinable).",
-            usage: "Choose an effect. Example: *${args[0]}${args[1]} slow,reverb*\n\nEffects: earrape, chipmunk, monster, muffled, reverb, fast, slow",
-            invalidEffect: "Unknown effect: *${args[0]}*\nEffects: earrape, chipmunk, monster, muffled, reverb, fast, slow",
+            usage: "Choose an effect. Example: *${args[0]}${args[1]} slow,reverb*\n\nEffects: earrape, chipmunk, monster, muffled, reverb, fast, slow, reverse, drunk\n\nCustom: *${args[0]}${args[1]} custom pitch:1.2,speed:1.2,reverb:5*",
+            invalidEffect: "Unknown effect: *${args[0]}*\nEffects: earrape, chipmunk, monster, muffled, reverb, fast, slow, reverse, drunk",
+            customUsage: "*# Edit Audio · Custom*\n\nExample: *${args[0]}${args[1]} custom pitch:1.2,speed:1.2,volume:2,reverb:5*\n\n- pitch: 0.1 – 4\n- speed: 0.5 – 4\n- volume: 1 – 10\n- reverb: 0 – 10 (reverb volume; the rest is the original audio)",
+            customInvalid: "*# Edit Audio · Custom*\n\nInvalid arguments. Check the limits:\n- pitch: 0.1 – 4\n- speed: 0.5 – 4\n- volume: 1 – 10\n- reverb: 0 – 10\n\nExample: *${args[0]}${args[1]} custom pitch:1.2,reverb:5*",
             noAudio: "Send or reply to an audio/voice note with this command as the caption.",
             failed: "*# Edit Audio*\n\nFailed to process the audio. Please try again later."
         },
@@ -475,6 +486,19 @@ export default {
             desc: "Grant an achievement to a user (owner only).",
             notFound: "Achievement with id ${args[0]} was not found.",
             already: "That user already has this achievement."
+        },
+        code: {
+            desc: "Manage redeem codes (owner only).",
+            usage: "Syntax:\n*${args[0]}${args[1]} add <st/nst> <code> <reward> <time> <link/*> [true/false]*\n*${args[0]}${args[1]} del <code>*",
+            addUsage: "Syntax: *${args[0]}${args[1]} add <st/nst> <code> <reward> <time> <link/*> [true/false]*\n\nExample: *${args[0]}${args[1]} add nst NARUTO yen:100,xp:5000,tf:10 3d * true*\n\n- *st* = set value, *nst* = add value\n- *reward*: yen/xp/tf (comma-separated, no spaces)\n- *time*: 30m / 24h / 3d / 2w\n- *link*: * (all groups) or a group invite link\n- *[true/false]*: claim once per user (default true)",
+            delUsage: "Syntax: *${args[0]}${args[1]} del <code>*",
+            invalidReward: "Invalid reward format. Use yen/xp/tf, e.g. *yen:100,xp:5000,tf:10* (no spaces).",
+            invalidTime: "Invalid time format. Example: *30m*, *24h*, *3d*, *2w*.",
+            invalidLink: "Invalid group link. Use *\\** (all groups) or a valid group invite link.",
+            notFound: "Code *${args[0]}* was not found.",
+            deleted: "Code *${args[0]}* was successfully deleted.",
+            scopeAll: "All groups",
+            added: "✅ Redeem code saved!\n\n*Code:* ${args[0]}\n*Mode:* ${args[1]}\n*Reward:* ${args[2]}\n*Expires:* ${args[3]}\n*Scope:* ${args[4]}\n*Once per user:* ${args[5]}"
         },
         addplugin: {
             desc: "Add a plugin from a replied message.",

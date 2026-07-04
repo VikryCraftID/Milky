@@ -1,6 +1,6 @@
 {
   "name": "Milky",
-  "version": "0.20.13b",
+  "version": "0.20.09b",
   "description": "Milky Interactive. Inspired by Shiro Interactive.",
   "keywords": [
     "whatsapp-bot",
@@ -30,7 +30,8 @@
   "scripts": {
     "start": "node start.js",
     "dev": "nodemon index.js",
-    "debug": "DEBUG=* node start.js"
+    "debug": "DEBUG=* node start.js",
+    "design": "node dev/design-preview/server.mjs"
   },
   "dependencies": {
     "@hapi/boom": "^10.0.0",
