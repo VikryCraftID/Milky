@@ -268,7 +268,7 @@ export default {
             author: "————— •\nMilky Interactive by CrystalDev"
         },
         mdl: {
-            desc: "Download media from certain platforms with MP3 or MP4 options. Supported platforms: YouTube, Facebook, Instagram, TikTok.",
+            desc: "Download media from certain platforms with MP3 or MP4 options. Supported platforms: YouTube, Facebook, Instagram, TikTok, X.",
             invalidUrl: "Invalid url parameter. Please provide a valid link.",
             notSupported: "Sorry, this platform is not supported.",
             title: "*# ${args[0]} Downloader*\n\nSelect the format you want to download:",
@@ -278,10 +278,12 @@ export default {
             failIg: "Failed to find Instagram media.",
             failTiktok: "Media not found.",
             failTiktokDl: "Failed to get TikTok download link.",
+            failX: "Failed to find X media.",
             successYt: "Media downloaded successfully from YouTube!",
             successFb: "Media downloaded successfully from Facebook!",
             successIg: "Media downloaded successfully from Instagram!",
             successTiktok: "Media downloaded successfully from TikTok!",
+            successX: "Media downloaded successfully from X!",
             btnMp3: "Audio (MP3)",
             btnMp4: "Video (MP4)"
         },
@@ -677,6 +679,16 @@ export default {
         lang: {
             desc: "Change Milky's primary language.",
             success: "Language successfully changed to *${args[0]}*."
+        },
+        card: {
+            desc: "Customize your status card (theme & color).",
+            usage: "Syntax:\n*${args[0]}${args[1]} theme <dark/light>*\n*${args[0]}${args[1]} color <default/#hex>*",
+            themeUsage: "Syntax: *${args[0]}${args[1]} theme <dark/light>*",
+            themeSet: "Card theme changed to *${args[0]}*. Check with *.status*.",
+            colorUsage: "Syntax: *${args[0]}${args[1]} color <default/#hex>*\nExample: *${args[0]}${args[1]} color #9f95f2*",
+            colorReset: "Card color reset to *default*. Check with *.status*.",
+            invalidColor: "Invalid color. Use a hex format like *#9f95f2*, or *default*.",
+            colorSet: "Card color changed to *${args[0]}*. Check with *.status*."
         }
     }
 };

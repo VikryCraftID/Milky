@@ -261,20 +261,22 @@ export default {
             author: "————— •\nMilky Interactive by CrystalDev"
         },
         mdl: {
-            desc: "Download media dari platform tertentu dengan pilihan MP3 atau MP4. Platform yang didukung: YouTube, Facebook, Instagram, TikTok.",
+            desc: "Download media dari berbagai platform dengan pilihan MP3 atau MP4. Platform yang didukung: YouTube, Facebook, Instagram, TikTok, X.",
             invalidUrl: "Parameter url tidak valid. Harap berikan link yang valid.",
             notSupported: "Maaf, platform ini tidak didukung.",
-            title: "*# ${args[0]} Downloader*\n\nPilih format yang ingin kamu download:",
-            failYt: "Semua server YouTube gagal.",
-            failFb: "Gagal mengambil data Facebook.",
+            title: "*# ${args[0]} Downloader*\n\nSilakan pilih jenis file yang ingin kamu unduh:",
+            failYt: "Semua server YouTube sedang bermasalah.",
+            failFb: "Gagal mengambil data dari Facebook.",
             failFormat: "Format ${args[0]} tidak tersedia.",
             failIg: "Gagal menemukan media Instagram.",
             failTiktok: "Media tidak ditemukan.",
             failTiktokDl: "Gagal mendapatkan link download TikTok.",
+            failX: "Gagal menemukan media X.",
             successYt: "Download media dari YouTube berhasil!",
             successFb: "Download media dari Facebook berhasil!",
             successIg: "Download media dari Instagram berhasil!",
             successTiktok: "Download media dari TikTok berhasil!",
+            successX: "Download media dari X berhasil!",
             btnMp3: "Audio (MP3)",
             btnMp4: "Video (MP4)"
         },
@@ -670,6 +672,16 @@ export default {
         lang: {
             desc: "Mengubah bahasa utama Milky.",
             success: "Bahasa berhasil diubah ke *${args[0]}*."
+        },
+        card: {
+            desc: "Kustomisasi kartu status (tema & warna).",
+            usage: "Syntax:\n*${args[0]}${args[1]} theme <dark/light>*\n*${args[0]}${args[1]} color <default/#hex>*",
+            themeUsage: "Syntax: *${args[0]}${args[1]} theme <dark/light>*",
+            themeSet: "Tema kartu diubah ke *${args[0]}*. Cek dengan *.status*.",
+            colorUsage: "Syntax: *${args[0]}${args[1]} color <default/#hex>*\nContoh: *${args[0]}${args[1]} color #9f95f2*",
+            colorReset: "Warna kartu dikembalikan ke *default*. Cek dengan *.status*.",
+            invalidColor: "Warna tidak valid. Gunakan format hex, contoh *#9f95f2*, atau *default*.",
+            colorSet: "Warna kartu diubah ke *${args[0]}*. Cek dengan *.status*."
         }
     }
 };
