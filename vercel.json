@@ -1,7 +1,7 @@
 {
   "version": 2,
   "rewrites": [
-    { "source": "/", "destination": "/wordle/index.html" },
+    { "source": "/", "destination": "/index.html" },
     { "source": "/wordle", "destination": "/wordle/index.html" },
     { "source": "/wordle/id/tutorial", "destination": "/wordle/tutorial.html" },
     { "source": "/wordle/(id|en)/:uuid", "destination": "/wordle/index.html" },
