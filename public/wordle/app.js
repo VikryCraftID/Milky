@@ -17,6 +17,7 @@ let sessionId = null;
 let currentGuess = '';
 let currentRow = 0;
 let gameOver = false;
+let isGuest = false;
 let currentLang = 'id';
 let deadline = null;       // timestamp (ms) when the round ends
 let timerInterval = null;
@@ -34,7 +35,12 @@ const dictUI = {
         winTitle: "KEMENANGAN", winMsg: "Luar biasa! Kamu berhasil menebaknya.",
         loseTitle: "GAME OVER", loseMsg: "Katanya adalah ",
         connErr: "Gagal terhubung ke Milky Bot",
-        notEnough: "Huruf belum lengkap", notInDict: "Kata tidak ada di kamus"
+        notEnough: "Huruf belum lengkap", notInDict: "Kata tidak ada di kamus",
+        guestTitle: "MAIN SEBAGAI TAMU?",
+        guestMsg: "Nggak perlu WhatsApp. Pilih bahasa, langsung main — tapi tanpa hadiah Yen & Exp.",
+        guestBtn: "Bermain sebagai Tamu",
+        guestId: "Bahasa Indonesia",
+        guestEn: "English"
     },
     en: {
         played: "Played", winrate: "Win Rate", best: "Best", winPct: "Win %",
@@ -46,7 +52,12 @@ const dictUI = {
         winTitle: "VICTORY", winMsg: "Magnificent! You guessed it.",
         loseTitle: "GAME OVER", loseMsg: "The word was ",
         connErr: "Failed to connect to Milky Bot",
-        notEnough: "Not enough letters", notInDict: "Word not in dictionary"
+        notEnough: "Not enough letters", notInDict: "Word not in dictionary",
+        guestTitle: "PLAY AS A GUEST?",
+        guestMsg: "No WhatsApp needed. Pick a language and play right away — but no Yen & Exp rewards.",
+        guestBtn: "Play as a Guest",
+        guestId: "Bahasa Indonesia",
+        guestEn: "English"
     }
 };
 
@@ -204,12 +215,57 @@ function showResultModal(title, msg, won, stats) {
     modalClose.style.display = 'block';
 }
 
+// Guest flow: tawarkan main sebagai tamu saat tidak ada sesi WA
+function showGuestOffer(lang) {
+    const d = dictUI[lang] || dictUI['id'];
+    currentLang = lang;
+    langSelect.value = lang;
+    applyTranslations(lang);
+    initBoard();
+    initKeyboard();
+    gameOver = true;
+    isGuest = false;
+    document.getElementById('timer-display').classList.add('hidden');
+    modalTitle.textContent = d.guestTitle;
+    modalTitle.style.color = "var(--accent-purple)";
+    modalMessage.innerHTML = `${d.guestMsg}<br><br>` +
+        `<button class="opt-btn" onclick="startGuest('id')">${d.guestId}</button><br><br>` +
+        `<button class="opt-btn" onclick="startGuest('en')">${d.guestEn}</button>`;
+    modalStats.classList.add('hidden');
+    modalStartBtn.classList.add('hidden');
+    modalOverlay.classList.remove('hidden');
+    modalClose.style.display = 'none';
+}
+
+async function startGuest(lang) {
+    modalMessage.innerHTML = '...';
+    try {
+        const response = await fetch(`${API_BASE}/api/wordle/guest/start`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ lang })
+        });
+        const data = await response.json();
+        if (!data.uuid) {
+            showMessage(t().connErr);
+            return;
+        }
+        isGuest = true;
+        window.history.replaceState({}, '', `/wordle/${data.lang}/${data.uuid}`);
+        modalOverlay.classList.add('hidden');
+        await loadSession();
+    } catch (e) {
+        console.error(e);
+        showMessage(t().connErr);
+    }
+}
+
 // Load Session State from Bot
 async function loadSession() {
     const params = parseUrlParams();
     if (!params) {
         applyTranslations('id');
-        showLockedScreen(dictUI['id'].errorTitle, dictUI['id'].errorMsg);
+        showGuestOffer('id');
         hideLoading();
         return;
     }
@@ -224,10 +280,12 @@ async function loadSession() {
 
         if (response.status !== 200) {
             applyTranslations(params.lang);
-            showLockedScreen(dictUI[params.lang].expTitle, data.error || dictUI[params.lang].expMsg);
+            showGuestOffer(params.lang);
             hideLoading();
             return;
         }
+
+        isGuest = !!data.guest;
 
         // Bahasa website mengikuti segmen URL (bahasa interaksi user), bukan bahasa kamus game
         currentLang = params.lang || data.lang || 'id';
