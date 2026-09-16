@@ -247,8 +247,8 @@ export default {
             cancel: "Autoplay session has been stopped."
         },
         smeme: {
-            desc: "Create a meme sticker from a replied or sent image. Supports emoji.",
-            invalid: "Invalid parameter. Send/reply image with caption *${args[0]}${args[1]} [text]*\nUse | separator for top/bottom text. Add --lq for pixelated effect.",
+            desc: "Create a meme sticker from a replied or sent image.",
+            invalid: "Invalid parameter. Send/reply image with caption *${args[0]}${args[1]} [text]*\nUse | separator if you want to add top and bottom text.",
             failed: "Failed to create meme sticker."
         },
         play: {

@@ -240,8 +240,8 @@ export default {
             cancel: "Sesi Autoplay telah dihentikan."
         },
         smeme: {
-            desc: "Membuat sticker meme dari gambar yang direply atau dikirim. Mendukung emoji.",
-            invalid: "Parameter tidak valid. Kirim/reply gambar dengan caption *${args[0]}${args[1]} [teks]*\nGunakan pemisah | untuk teks atas/bawah. Tambahkan --lq untuk efek pixelated.",
+            desc: "Membuat sticker meme dari gambar yang direply atau dikirim.",
+            invalid: "Parameter tidak valid. Kirim/reply gambar dengan caption *${args[0]}${args[1]} [teks]*\nGunakan pemisah | jika ingin menambahkan teks atas dan bawah.",
             failed: "Gagal membuat sticker meme."
         },
         play: {
